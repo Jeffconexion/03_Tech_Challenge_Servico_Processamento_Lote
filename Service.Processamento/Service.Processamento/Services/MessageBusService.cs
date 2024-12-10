@@ -16,9 +16,10 @@ namespace Service.Processamento.Services
         {
             _factory = new ConnectionFactory
             {
-                HostName = "localhost",
+                HostName = "rabbitmq",
                 UserName = "guest",
-                Password = "guest"
+                Password = "guest",
+                Port = 5672
             };
         }
 
@@ -50,6 +51,7 @@ namespace Service.Processamento.Services
                         
                         //Salva no banco em lote
                         channel.BasicAck(eventArgs.DeliveryTag, false);
+                        Console.WriteLine($"Salvo com sucesso!");
                     }
                     catch (Exception ex)
                     {
