@@ -45,9 +45,9 @@ namespace Service.Processamento.Services
                         var paymentApprovedBytes = eventArgs.Body.ToArray();
                         var paymentApprovedJson = Encoding.UTF8.GetString(paymentApprovedBytes);
 
-                        var messageNotification = JsonSerializer.Deserialize<CreateContactRequest>(paymentApprovedJson);
+                        var messageProcessamento = JsonSerializer.Deserialize<CreateContactRequest>(paymentApprovedJson);
 
-                        Console.WriteLine(messageNotification.Name + " " + messageNotification.Email);
+                        Console.WriteLine(messageProcessamento.Name + " " + messageProcessamento.Email);
                         
                         //Salva no banco em lote
                         channel.BasicAck(eventArgs.DeliveryTag, false);

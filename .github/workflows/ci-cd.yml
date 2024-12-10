@@ -1,4 +1,4 @@
-# Workflow para build, testes unitários e verificação de segurança do projeto Service.Notification.
+# Workflow para build, testes unitários e verificação de segurança do projeto Service.Processamento.
 # Este workflow é acionado em pushs e pull requests na branch 'master'.
 
 name: Notificacao Workflow
@@ -45,17 +45,17 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
-      # Passo 3: Restaura dependências necessárias para o projeto Service.Notification
+      # Passo 3: Restaura dependências necessárias para o projeto Service.Processamento
       - name: Step 3 Restore Dependencies
-        run: dotnet restore ./Service.Notification/Service.Notification.sln
+        run: dotnet restore ./Service.Processamento/Service.Processamento.sln
 
-      # Passo 4: Constrói o projeto Service.Notification
+      # Passo 4: Constrói o projeto Service.Processamento
       - name: Step 4 Build Project
-        run: dotnet build ./Service.Notification/Service.Notification.sln --no-restore
+        run: dotnet build ./Service.Processamento/Service.Processamento.sln --no-restore
 
       # Passo 5: Executa a análise estática de código usando StyleCop para garantir padrões de codificação
       - name: Step 5 Run StyleCop Analysis
-        run: dotnet build ./Service.Notification/Service.Notification.sln --no-restore
+        run: dotnet build ./Service.Processamento/Service.Processamento.sln --no-restore
 
   tests:
     runs-on: ubuntu-latest
@@ -73,4 +73,4 @@ jobs:
 
       # Passo 3: Executa os testes unitários para validar o comportamento do código
       - name: Step 3 Run Tests
-        run: dotnet test ./Service.Notification/Service.Notification.sln --verbosity normal
+        run: dotnet test ./Service.Processamento/Service.Processamento.sln --verbosity normal
